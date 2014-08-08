@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    {% for object in object_list %}
+        <div>{{ object }}</div>
+    {% empty %}
+        <div class="jumbotron text-center">{% trans 'Не найдено ни одного видеоматериала по Вашему запросу.' %}</div>
+    {% endfor %}
+
+{% endblock %}

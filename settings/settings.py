@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+SETTINGS_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -23,6 +23,9 @@ SECRET_KEY = '6q6t77q!s@ens6c&3wbpr$895csf)i$bvnx&f8-a(n@@u!b**&'
 DEBUG = False
 
 TEMPLATE_DEBUG = True
+TEMPLATE_DIRS = (
+    SETTINGS_PATH + '/templates/'
+)
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'jinja2',
     'south',
     'video',
@@ -54,7 +58,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'settings.urls'
 
 WSGI_APPLICATION = 'wsgi.application'
 
@@ -96,6 +100,8 @@ LANGUAGES = (
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 STATICFILES_DIRS = (
-    PROJECT_ROOT + '/static/',
+    SETTINGS_PATH + '/static/',
 )
+
+AUTH_USER_MODEL = 'auth.User'
 from settings_local import *
