@@ -8,6 +8,7 @@ from django.views.generic import FormView, TemplateView
 
 from auth.forms import RegistrationForm
 from auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 
 class RegistrationView(FormView):
@@ -31,9 +32,10 @@ class RegistrationView(FormView):
 class LoginView(TemplateView):
     template_name = 'login.html'
     http_method_names = ['get', 'post']
+    error = None
 
     def post(self, request, *args, **kwargs):
-        username = request.POST.get('login', '')
+        username = request.POST.get('username', '')
         password = request.POST.get('password', '')
         remember_me = request.POST.get('remember_me', None)
 
@@ -43,6 +45,10 @@ class LoginView(TemplateView):
 
             if not remember_me:
                 request.session.set_expiry(0)
+        else:
+            self.error = _('Имя пользователя или пароль введены неверно.')
+            return self.get(request, *args, **kwargs)
+
 
         if request.GET.get('next', ''):
             redirect_to = request.GET.get('next', '')
@@ -50,8 +56,12 @@ class LoginView(TemplateView):
             redirect_to = '/'
 
         redirect_to = redirect_to if redirect_to else '/'
-
         return HttpResponseRedirect(redirect_to)
+
+    def get_context_data(self, **kwargs):
+        context = super(LoginView, self).get_context_data(**kwargs)
+        context['error'] = self.error
+        return context
 
 
 def logout_user(request):

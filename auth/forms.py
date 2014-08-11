@@ -13,6 +13,11 @@ class RegistrationForm(forms.Form):
     confirm_password = forms.CharField(label=_('Подтверждение пароля'), max_length=64, required=True,
                                        widget=forms.PasswordInput, min_length=5)
 
+    def __init__(self, *args, **kwargs):
+        super(RegistrationForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'class': 'form-control'})
+
     def clean_email(self):
         email = self.cleaned_data.get('email', '')
         if not email:
@@ -46,3 +51,10 @@ class RegistrationForm(forms.Form):
             raise forms.ValidationError(_('Введенные пароли не совпадают.'))
 
         return confirm_password
+
+
+class LoginForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')

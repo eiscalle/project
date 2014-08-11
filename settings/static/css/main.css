@@ -1,0 +1,21 @@
+.main-content{
+    margin: 0 10px 0 10px;
+    width:67%;
+    float: left;
+}
+
+.left-content{
+   float: left;
+    margin-left: 10px;
+    width: 15%;
+}
+
+.right-content {
+    float: right;
+    margin-right: 10px;
+    width: 15%;
+}
+
+.table_for_form td{
+    padding: 5px 10px 0 5px;
+}

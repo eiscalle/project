@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
 </head>
 
@@ -36,16 +37,8 @@
                 {% if user.is_authenticated %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle"
-                           data-toggle="dropdown">{{ user.first_name }} {{ user.last_name }} <span
-                                class="label label-success">99</span><span class="caret"></span></a>
+                           data-toggle="dropdown">{{ user.username }}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"> #Уведомления <span class="label label-success">99</span></a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">
-                                <div style="width: 200px; word-wrap: break-word; word-break: break-all;">
-                                    #{{ user.appointment }}</div>
-                            </a></li>
-                            <li class="divider"></li>
                             <li><a href="{% url 'logout' %}">Выйти из системы</a></li>
                         </ul>
                     </li>
@@ -58,11 +51,31 @@
         <!--/.nav-collapse -->
     </div>
 </div>
-<div class="container">
-    {% block content %}
-    {% endblock %}
+
+
+<div class="panel panel-default left-content">
+    <div class="panel-body">
+{% block left_content %}
+        Left content
+{% endblock %}
+    </div>
 </div>
-<!-- /.container -->
+
+<div class="panel panel-default main-content">
+    <div class="panel-body">
+{% block content %}
+            Main Content
+{% endblock %}
+    </div>
+</div>
+
+<div class="panel panel-default right-content">
+    <div class="panel-body">
+{% block right_content %}
+        Right content
+{% endblock %}
+    </div>
+</div>
 
 
 <!-- Bootstrap core JavaScript
