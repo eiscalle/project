@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from coffin.views.generic import FormView, TemplateView
 
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import FormView, TemplateView
 
 from auth.forms import RegistrationForm
 from auth.models import User

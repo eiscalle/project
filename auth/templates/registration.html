@@ -1,50 +1,8 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% from 'macro.html' import render_form %}
 {% block content %}
-    <div class="panel-heading"><h3>{% trans 'Регистрация на сайте' %}</h3></div>
-    <form action="{% url 'registration' %}" method="post">
-        {% csrf_token %}
-        {% if form.errors %}
-            <div class="alert alert-danger">{% trans 'Пожалуйста, исправьте ошибки ниже.' %}</div>
-        {% endif %}
-        <table class="table_for_form">
-            <tbody>
-            <tr>
-                <td>
-                    <label for="id_username">{{ form.username.label }}: </label>
-
-                </td>
-                <td>
-                    {{ form.username }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="id_password">{{ form.password.label }}: </label>
-
-                </td>
-                <td>
-                    {{ form.password }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="id_confirm_password">{{ form.confirm_password.label }}: </label>
-
-                </td>
-                <td class="has-error">
-{#                    {{ form.confirm_password.errors.0 }}#}
-                    {{ form.confirm_password }}
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <input type="submit" value="{% trans 'Зарегистрироваться' %}" class="btn btn-default">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
+    <div class="panel-heading"><h3>{% trans %}Регистрация на сайте{% endtrans %}</h3></div>
+    {{ render_form(form, 'registration'|url, csrf_token=csrf_token) }}
 
 {% endblock %}

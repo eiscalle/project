@@ -1,0 +1,36 @@
+{#{% load i18n %}#}
+{% macro render_form(form, action, method='post', csrf_token=None) %}
+    <form action="{{ action }}" method="{{ method }}">
+        {% if method == 'post' %}
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        {% endif %}
+        {% if form.errors %}
+            <div class="alert alert-danger">{% trans %}Пожалуйста, исправьте ошибки ниже.{% endtrans %}</div>
+        {% endif %}
+        <table class="table_for_form">
+            <tbody>
+            {% for field in form %}
+                <tr>
+                    <td>
+                        <label for="{{ field.auto_id }}">{{ field.label }}: </label>
+
+                    </td>
+                    <td{% if field.errors %} class="has-error"{% endif %}>
+                        {{ field|safe }}
+                    </td>
+
+                    {% if field.errors %}
+                        <td class="text-danger">{{ field.errors.0 }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td>
+                    <input type="submit" value="{% trans %}Отправить{% endtrans %}" class="btn btn-default">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+{% endmacro %}

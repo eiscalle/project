@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from coffin.views.generic import ListView
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import ListView
 from video.models import Video
 
 
