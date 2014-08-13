@@ -3,7 +3,7 @@ from django.contrib import admin
 from auth.views import LoginView, RegistrationView
 
 from home.views import HomePage
-from video.views import VideoList
+from series.views import EpisodeList
 
 
 admin.autodiscover()

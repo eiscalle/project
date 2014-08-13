@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    {% if object_list %}
+        {% for object in object_list %}
+            <div>{{ object }}</div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center">{% trans %}Не найдено ни одного видеоматериала по Вашему запросу.{% endtrans %}</div>
+    {% endif %}
+
+{% endblock %}

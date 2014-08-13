@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-    <div class="panel-heading"><h3>{% trans 'Вход на сайт' %}</h3></div>
+    <div class="panel-heading"><h3>{% trans %}Вход на сайт{% endtrans %}</h3></div>
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         {% if error %}
@@ -11,16 +11,16 @@
             <tbody>
             <tr>
                 <td>
-                    <label for="username">{% trans 'Имя пользователя' %}: </label>
+                    <label for="username">{% trans %}Имя пользователя{% endtrans %}: </label>
                 </td>
                 <td>
-                    <input type="text" class="form-control" id="username" placeholder="{% trans 'Имя пользователя' %}"
+                    <input type="text" class="form-control" id="username" placeholder="{% trans %}Имя пользователя{% endtrans %}"
                            name="username">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="password">{% trans 'Пароль' %}: </label>
+                    <label for="password">{% trans %}Пароль{% endtrans %}: </label>
                 </td>
                 <td>
                     <input type="password" class="form-control" id="password" name="password">
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <label for="remember_me">{% trans 'Запомнить меня' %}: </label>
+                    <label for="remember_me">{% trans %}Запомнить меня{% endtrans %}: </label>
                 </td>
                 <td>
                     <input type="checkbox" class="form-control" id="remember_me" name="remember_me">
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="{% trans 'Войти' %}" class="btn btn-default">
+                    <input type="submit" value="{% trans %}Войти{% endtrans %}" class="btn btn-default">
                 </td>
             </tr>
             </tbody>

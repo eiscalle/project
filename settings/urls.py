@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     url(r'^', include('home.urls')),
     url(r'^', include('auth.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^video/', include('video.urls')),
+    url(r'^series/', include('series.urls')),
 )

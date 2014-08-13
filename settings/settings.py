@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'jinja2',
     'south',
-    'video',
+    'series',
     'home',
     'auth',
     'subtitles',
@@ -68,6 +68,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
     'django.core.context_processors.csrf',
+    'settings.context_processors.series_list',
 )
 
 ROOT_URLCONF = 'settings.urls'

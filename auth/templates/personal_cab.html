@@ -1,0 +1,14 @@
+<div class="panel-heading">
+    {% trans %}Личный кабинет{% endtrans %}
+</div>
+<div class="panel-body">
+    {% if user.is_authenticated() %}
+        <div>{{ user.username }}</div>
+        <div><a href="{% url 'episode_create' %}">Загрузить</a></div>
+        <div><a href="{% url 'logout' %}">Выход</a></div>
+    {% else %}
+        <div><a href="{% url 'login' %}">{% trans %}Войти{% endtrans %}</a></div>
+        <div><a href="{% url 'registration' %}">{% trans %}Зарегистрироваться{% endtrans %}</a></div>
+    {% endif %}
+
+</div>
