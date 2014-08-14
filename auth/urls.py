@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from django.contrib import admin
 from auth.views import LoginView, RegistrationView
 
-from home.views import HomePage
+from home.views import HomePageView
 from series.views import EpisodeList
 
 

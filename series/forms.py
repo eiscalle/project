@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.utils.translation import ugettext_lazy as _
 from django import forms
 from auth.models import User
-from django.utils.translation import ugettext_lazy as _
 from series.models import Episode
 
 

@@ -7,6 +7,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from auth.models import User
+from settings.constants import LANGUAGES
 
 
 class Tag(models.Model):
@@ -23,6 +24,8 @@ class Tag(models.Model):
 class Series(models.Model):
     name = models.CharField(_('Название'), default='', max_length=255)
     description = models.TextField(_('Описание'), default='', max_length=3000)
+    original_language = models.CharField(_('Язык сериала'), max_length=24, choices=LANGUAGES,
+                                         default=LANGUAGES[0][0])
     tags = models.ManyToManyField(Tag, verbose_name=_('Теги'), related_name='series', null=True, default=None,
                                   blank=True)
 
@@ -57,3 +60,6 @@ class Episode(models.Model):
 
     def __unicode__(self):
         return '%s: %s' % (self.series.name, self.name)
+
+    # def get_upload_to(self):
+    #     return 'series/%s/season_%s/'

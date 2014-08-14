@@ -3,6 +3,68 @@
 {% from 'macros.html' import render_form %}
 {% block content %}
     <div class="panel-heading"><h3>{% trans %}Загрузка видео{% endtrans %}</h3></div>
-    {{ render_form(form, 'episode_create'|url, csrf_token=csrf_token) }}
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ subtitle_formset.management_form|safe }}
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        {% if form.errors or subtitle_formset.errors %}
+            <div class="alert alert-danger">{% trans %}Пожалуйста, исправьте ошибки ниже.{% endtrans %}</div>
+        {% endif %}
+        <table class="table_for_form">
+            <tbody>
+            {% for field in form %}
+                <tr>
+                    <td>
+                        <label for="{{ field.auto_id }}">{{ field.label }}: </label>
+
+                    </td>
+                    <td{% if field.errors %} class="has-error"{% endif %}>
+                        {{ field|safe }}
+                    </td>
+
+                    {% if field.errors %}
+                        <td class="text-danger">{{ field.errors.0 }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><h3>Субтитры</h3></td>
+            </tr>
+            {% for subtitle_form in subtitle_formset %}
+                <tr>
+                    <td>
+                        <label for="{{ subtitle_form.source.auto_id }}">{{ subtitle_form.source.label }}: </label>
+
+                    </td>
+                    <td>
+                        {{ subtitle_form.source|safe }}
+                    </td>
+
+                    {% if subtitle_form.source.errors %}
+                        <td class="text-danger">{{ subtitle_form.source.errors.0 }}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>
+                        <label for="{{ subtitle_form.language.auto_id }}">{{ subtitle_form.language.label }}: </label>
+
+                    </td>
+                    <td>
+                        {{ subtitle_form.language|safe }}
+                    </td>
+                    {% if subtitle_form.language.errors %}
+                        <td class="text-danger">{{ subtitle_form.language.errors.0 }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+
+
+            <tr>
+                <td>
+                    <input type="submit" value="{% trans %}Отправить{% endtrans %}" class="btn btn-default">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
 
 {% endblock %}
