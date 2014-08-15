@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% from 'macros.html' import no_results %}
+
 {% block content %}
+    <div class="panel-heading"><h3>{% trans %}Результаты поиска{% endtrans %}</h3></div>
+    <div class="panel-body">
     {% if object_list %}
         {% for object in object_list %}
-            <div>{{ object }}</div>
+            <div><a href="{{ object.get_absolute_url() }}">{{ object.name }}</a></div>
         {% endfor %}
+
     {% else %}
         {{ no_results() }}
     {% endif %}
-
+    </div>
 {% endblock %}

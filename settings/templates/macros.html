@@ -34,3 +34,7 @@
         </table>
     </form>
 {% endmacro %}
+
+{% macro no_results() %}
+    <div class="alert alert-info text-center">{% trans %}Извините, по Вашему запросу ничего не найдено.{% endtrans %}</div>
+{% endmacro %}

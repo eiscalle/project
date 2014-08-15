@@ -22,7 +22,7 @@ class Tag(models.Model):
 
 
 class Series(models.Model):
-    name = models.CharField(_('Название'), default='', max_length=255)
+    name = models.CharField(_('Название'), default='', max_length=255, db_index=True)
     description = models.TextField(_('Описание'), default='', max_length=3000)
     original_language = models.CharField(_('Язык сериала'), max_length=24, choices=LANGUAGES,
                                          default=LANGUAGES[0][0])
