@@ -5,7 +5,13 @@ from django.forms.models import inlineformset_factory
 from auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from series.models import Episode
+from settings.mixins import BootstrapFormMixin
 from subtitles.models import Subtitle
 
 
-SubtitleFormset = inlineformset_factory(Episode, Subtitle, extra=2, max_num=2, can_delete=False)
+class SubtitleForm(BootstrapFormMixin, forms.ModelForm):
+
+    class Meta:
+        model = Subtitle
+
+SubtitleFormset = inlineformset_factory(Episode, Subtitle, SubtitleForm, extra=2, max_num=2, can_delete=False)

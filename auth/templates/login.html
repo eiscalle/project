@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
+
+{% block main_panel_name %}
+    {% trans %}Вход на сайт{% endtrans %}
+{% endblock %}
+
 {% block content %}
-    <div class="panel-heading"><h3>{% trans %}Вход на сайт{% endtrans %}</h3></div>
-    <form action="{% url 'login' %}" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         {% if error %}
             <div class="alert alert-danger">{{ error }}</div>
@@ -31,7 +35,7 @@
                     <label for="remember_me">{% trans %}Запомнить меня{% endtrans %}: </label>
                 </td>
                 <td>
-                    <input type="checkbox" class="form-control" id="remember_me" name="remember_me">
+                    <input type="checkbox" class="form-control" id="remember_me" name="remember_me" value="1" checked>
                 </td>
             </tr>
             <tr>

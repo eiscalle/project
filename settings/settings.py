@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'auth',
     'subtitles',
     'coffin',
+    'crispy_forms'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -116,5 +117,14 @@ STATICFILES_DIRS = (
     SETTINGS_PATH + '/static/',
 )
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 AUTH_USER_MODEL = 'auth.User'
+
+JINJA2_EXTENSIONS = (
+    'jinja2.ext.i18n',
+)
+
+LOGIN_URL = '/login/'
+
 from settings_local import *

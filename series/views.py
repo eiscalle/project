@@ -2,9 +2,10 @@
 from __future__ import unicode_literals
 from coffin.views.generic import ListView, CreateView
 from django.forms.models import inlineformset_factory
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from series.forms import EpisodeCreateForm
-from series.models import Episode
+from series.models import Episode, Series
 from subtitles.forms import SubtitleFormset
 from subtitles.models import Subtitle
 
@@ -15,6 +16,15 @@ class EpisodeList(ListView):
 
     def get_queryset(self):
         return super(EpisodeList, self).get_queryset().filter(series_id=self.kwargs['series_id'])
+
+    def get(self, request, *args, **kwargs):
+        self.series = get_object_or_404(Series, pk=self.kwargs['series_id'])
+        return super(EpisodeList, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(EpisodeList, self).get_context_data(**kwargs)
+        context['series'] = self.series
+        return context
 
 
 class EpisodeCreate(CreateView):

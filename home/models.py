@@ -4,6 +4,7 @@ import datetime
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from settings.constants import LANGUAGES
 
 
 class Feedback(models.Model):
@@ -23,6 +24,7 @@ class Feedback(models.Model):
 class WantedSeries(models.Model):
     name = models.CharField(_('Название сериала'), default='', max_length=255)
     season = models.PositiveSmallIntegerField(_('Номер сезона'), default=1)
+    language = models.CharField(_('Язык перевода'), choices=LANGUAGES, default=LANGUAGES[0][0], max_length=24)
     email = models.EmailField(_('E-mail'), default='', max_length=255)
 
     class Meta:

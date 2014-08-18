@@ -49,7 +49,6 @@ class LoginView(TemplateView):
             self.error = _('Имя пользователя или пароль введены неверно.')
             return self.get(request, *args, **kwargs)
 
-
         if request.GET.get('next', ''):
             redirect_to = request.GET.get('next', '')
         else:

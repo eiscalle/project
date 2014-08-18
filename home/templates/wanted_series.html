@@ -2,7 +2,10 @@
 {% load i18n %}
 {% from 'macros.html' import render_form %}
 
+{% block main_panel_name %}
+    {% trans %}Заказать сериал{% endtrans %}
+{% endblock %}
+
 {% block content %}
-    <div class="panel-heading"><h3>{% trans %}Заказать сериал{% endtrans %}</h3></div>
     {{ render_form(form, 'feedback'|url, csrf_token=csrf_token) }}
 {% endblock %}

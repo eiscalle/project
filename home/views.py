@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from coffin.views.generic import TemplateView, CreateView, ListView
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-from home.forms import FeedbackForm
+from home.forms import FeedbackForm, WantedSeriesForm
 from home.models import Feedback, WantedSeries
 from series.models import Series
 
@@ -21,6 +21,7 @@ class FeedbackView(CreateView):
 
 class WantedSeriesView(CreateView):
     model = WantedSeries
+    form_class = WantedSeriesForm
     template_name = 'wanted_series.html'
     success_url = reverse_lazy('home')
 

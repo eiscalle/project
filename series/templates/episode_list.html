@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% from 'macros.html' import no_results %}
+
+{% block main_panel_name %}
+    {{ series.name }}
+{% endblock %}
+
 {% block content %}
     {% if object_list %}
         {% for object in object_list %}

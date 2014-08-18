@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% from 'macros.html' import render_form %}
+
+{% block main_panel_name %}
+    {% trans %}Загрузка сериала{% endtrans %}
+{% endblock %}
+
 {% block content %}
-    <div class="panel-heading"><h3>{% trans %}Загрузка видео{% endtrans %}</h3></div>
     <form action="" method="post" enctype="multipart/form-data">
         {{ subtitle_formset.management_form|safe }}
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
