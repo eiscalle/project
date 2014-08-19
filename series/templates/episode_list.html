@@ -9,7 +9,7 @@
 {% block content %}
     {% if object_list %}
         {% for object in object_list %}
-            <div>{{ object }}</div>
+            <div><a href="{{ object.get_absolute_url() }}">{{ object.name }}</a></div>
         {% endfor %}
     {% else %}
         {{ no_results() }}

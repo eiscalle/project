@@ -44,8 +44,8 @@ class Episode(models.Model):
     name = models.CharField(_('Название'), default='', max_length=255)
     season = models.PositiveSmallIntegerField(_('Сезон'), default=1)
     number = models.PositiveSmallIntegerField(_('Номер серии'), default=1)
-    source = models.FileField(_('Видеофайл'), upload_to='video/%Y/%m/%d')
-    preview = models.ImageField(_('Превью'), upload_to='screensavers/%Y/%m/%d')
+    source = models.FileField(_('Видеофайл'), upload_to='video/%Y/%m/%d', max_length=255)
+    preview = models.ImageField(_('Превью'), upload_to='screensavers/%Y/%m/%d', max_length=255)
     created_at = models.DateTimeField(_('Дата создания'), default=datetime.datetime.now(), auto_now_add=True)
     is_published = models.BooleanField(_('Опубликовано'), default=False)
 
@@ -60,6 +60,9 @@ class Episode(models.Model):
 
     def __unicode__(self):
         return '%s: %s' % (self.series.name, self.name)
+
+    def get_absolute_url(self):
+        return reverse('episode_detail', args=[self.series.pk, self.pk])
 
     # def get_upload_to(self):
     #     return 'series/%s/season_%s/'

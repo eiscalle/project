@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% from 'macros.html' import no_results %}
+
+{% block main_panel_name %}
+    {{ series.name }}
+{% endblock %}
+
+{% block content %}
+    {{ object }}
+
+{% endblock %}
