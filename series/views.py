@@ -4,6 +4,7 @@ from coffin.views.generic import ListView, CreateView, DetailView
 import datetime
 from django.core.urlresolvers import reverse_lazy
 from django.forms.models import inlineformset_factory
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from series.forms import EpisodeCreateForm
@@ -51,16 +52,13 @@ class EpisodeCreate(CreateView):
         self.subtitle_formset = SubtitleFormset(request.POST, request.FILES)
         if form.is_valid() and self.subtitle_formset.is_valid():
             form.instance.created_by = request.user
+            self.object = form.save()
             for form in self.subtitle_formset:
-                form.
-            return self.form_valid(form)
+                form.instance.episode = self.object
+                form.save()
+            return HttpResponseRedirect(self.get_success_url())
         else:
             return self.form_invalid(form)
-
-    def form_valid(self, form):
-        response = super(EpisodeCreate, self).form_valid(form)
-        self.subtitle_formset.save()
-        return response
 
     def get_context_data(self, **kwargs):
         context = super(EpisodeCreate, self).get_context_data(**kwargs)

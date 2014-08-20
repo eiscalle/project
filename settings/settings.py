@@ -114,6 +114,8 @@ LANGUAGES = (
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
+MEDIA_URL = BASE_DIR + '/upload/'
+
 STATICFILES_DIRS = (
     SETTINGS_PATH + '/static/',
 )
