@@ -23,7 +23,7 @@
 
 
 <div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -37,6 +37,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'wanted_series' %}">{% trans %}Заказать сериал{% endtrans %}</a></li>
                 <li><a href="{% url 'feedback' %}">{% trans %}Оставить отзыв{% endtrans %}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% for lang_code, lang_name in LANGUAGES %}
+                <li><a href="{% url 'change_language' lang_code %}" class="language"><img src="{% static 'images/icons/' + lang_code + '.png' %}" alt="{{ lang_name }}"/></a></li>
+            {% endfor %}
             </ul>
             <form class="navbar-form navbar-right" action="{% url 'search' %}" role="search">
                 <div class="form-group">

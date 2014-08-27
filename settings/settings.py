@@ -52,6 +52,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -103,8 +104,10 @@ USE_TZ = True
 
 USE_I18N = True
 LANGUAGE_CODE = 'ru'
+_ = lambda s: s
 LANGUAGES = (
-    ('ru', 'Russian'),
+    ('ru', _('Russian')),
+    ('en', _('English')),
 )
 
 

@@ -8,3 +8,4 @@ from subtitles.models import Subtitle
 class SubtitleInline(admin.StackedInline):
     model = Subtitle
     extra = 2
+    max_num = 2

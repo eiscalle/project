@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-27 13:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:14 models.py:25 models.py:44
+msgid "Название"
+msgstr "Name"
+
+#: models.py:17
+msgid "Тег"
+msgstr "Tag"
+
+#: models.py:18 models.py:29 models.py:54
+msgid "Теги"
+msgstr "Tags"
+
+#: models.py:26
+msgid "Описание"
+msgstr "Description"
+
+#: models.py:27
+msgid "Язык сериала"
+msgstr "Series language"
+
+#: models.py:36 models.py:52
+msgid "Сериал"
+msgstr "Serial"
+
+#: models.py:37
+msgid "Сериалы"
+msgstr "Serials"
+
+#: models.py:45
+msgid "Сезон"
+msgstr "Season"
+
+#: models.py:46
+msgid "Номер серии"
+msgstr "Episode number"
+
+#: models.py:47
+msgid "Видеофайл"
+msgstr "Videofile"
+
+#: models.py:48
+msgid "Превью"
+msgstr "Preview"
+
+#: models.py:49
+msgid "Дата создания"
+msgstr "Created at"
+
+#: models.py:50
+msgid "Опубликовано"
+msgstr "Is published"
+
+#: models.py:53
+msgid "Пользователь"
+msgstr "User"
+
+#: models.py:58
+msgid "Серия"
+msgstr "Series"
+
+#: models.py:59
+msgid "Серии"
+msgstr "Series"
+
+#: templates/episode_create.html:6
+msgid "Загрузка сериала"
+msgstr "Series donwloading"
+
+#: templates/episode_create.html:14
+msgid "Пожалуйста, исправьте ошибки ниже."
+msgstr "Please, correct the errors below."
+
+#: templates/episode_create.html:67
+msgid "Отправить"
+msgstr "Send"

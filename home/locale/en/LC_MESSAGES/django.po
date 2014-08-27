@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-27 13:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:11
+msgid "Заголовок"
+msgstr "Title"
+
+#: models.py:12
+msgid "Сообщение"
+msgstr "Message"
+
+#: models.py:13 models.py:28
+msgid "E-mail"
+msgstr "E-mail"
+
+#: models.py:14
+msgid "Дата создания"
+msgstr "Created at"
+
+#: models.py:17
+msgid "Отзыв"
+msgstr "Feedback"
+
+#: models.py:18
+msgid "Отзывы"
+msgstr "Feedbacks"
+
+#: models.py:25
+msgid "Название сериала"
+msgstr "Series name"
+
+#: models.py:26
+msgid "Номер сезона"
+msgstr "Season number"
+
+#: models.py:27
+msgid "Язык перевода"
+msgstr "Translating language"
+
+#: models.py:31
+msgid "Заказ сериала"
+msgstr "Series order"
+
+#: models.py:32
+msgid "Заказы сериалов"
+msgstr "Series orders"
+
+#: templates/feedback.html:6
+msgid "Оставить отзыв"
+msgstr "Leave a feedback"
+
+#: templates/search.html:6
+msgid "Результаты поиска"
+msgstr "Searching results"
+
+#: templates/wanted_series.html:6
+msgid "Заказать сериал"
+msgstr "Order a series"

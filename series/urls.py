@@ -1,11 +1,8 @@
 from django.conf.urls import patterns, url
-from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 
 from series.views import EpisodeList, EpisodeCreate, EpisodeDetail
 
-
-admin.autodiscover()
 
 urlpatterns = patterns(
     '',

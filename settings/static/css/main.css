@@ -19,3 +19,8 @@
 .table_for_form td{
     padding: 5px 10px 0 5px;
 }
+
+.language{
+    padding: 1px 0 0 5px !important;
+    margin: 0 0 0 0;
+}

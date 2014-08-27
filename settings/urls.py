@@ -1,17 +1,20 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'project.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^', include('home.urls')),
     url(r'^', include('auth.urls')),
+
+    url(r'^change_lang/(?P<lang_code>(en|ru))/$', 'home.views.change_language', name='change_language'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^series/', include('series.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_patterns('',
+    url(r'^series/', include('series.urls')),
+    url(r'^', include('home.urls')),
+)

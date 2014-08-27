@@ -4,8 +4,8 @@
 <div class="panel-body">
     {% if user.is_authenticated() %}
         <div>{{ user.username }}</div>
-        <div><a href="{% url 'episode_create' %}">Загрузить</a></div>
-        <div><a href="{% url 'logout' %}">Выход</a></div>
+        <div><a href="{% url 'episode_create' %}">{% trans %}Загрузить{% endtrans %}</a></div>
+        <div><a href="{% url 'logout' %}">{% trans %}Выход{% endtrans %}</a></div>
     {% else %}
         <div><a href="{% url 'registration' %}">{% trans %}Зарегистрироваться{% endtrans %}</a></div>
         <div><a href="{% url 'login' %}">{% trans %}Войти{% endtrans %}</a></div>
