@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-27 13:51+0000\n"
+"POT-Creation-Date: 2014-08-28 09:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,22 +19,58 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: models.py:12
-msgid "Исходный файл"
+#: constants.py:6
+msgid "Английский"
 msgstr ""
 
-#: models.py:13
-msgid "Язык"
+#: constants.py:7
+msgid "Русский"
 msgstr ""
 
-#: models.py:15
-msgid "Сериал"
+#: constants.py:8
+msgid "Китайский"
 msgstr ""
 
-#: models.py:18
-msgid "Субтитр"
+#: settings.py:109
+msgid "Russian"
 msgstr ""
 
-#: models.py:19
-msgid "Субтитры"
+#: settings.py:110
+msgid "English"
+msgstr ""
+
+#: templates/base.html:34
+msgid "Проект"
+msgstr ""
+
+#: templates/base.html:38
+msgid "Заказать сериал"
+msgstr ""
+
+#: templates/base.html:39
+msgid "Оставить отзыв"
+msgstr ""
+
+#: templates/base.html:48 templates/base.html.py:50
+msgid "Поиск"
+msgstr ""
+
+#: templates/base.html:60
+msgid "Сериалы"
+msgstr ""
+
+#: templates/base.html:72
+msgid "Главная страница"
+msgstr ""
+
+#: templates/macros.html:8
+msgid "Пожалуйста, исправьте ошибки ниже."
+msgstr ""
+
+#: templates/macros.html:30
+msgid "Отправить"
+msgstr ""
+
+#: templates/macros.html:39
+msgid "Извините, по Вашему запросу ничего не найдено."
 msgstr ""

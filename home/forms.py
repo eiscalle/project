@@ -5,16 +5,15 @@ from django import forms
 from auth.models import User
 from home.models import Feedback, WantedSeries
 from series.models import Episode
-from settings.mixins import BootstrapFormMixin
 
 
-class FeedbackForm(BootstrapFormMixin, forms.ModelForm):
+class FeedbackForm(forms.ModelForm):
 
     class Meta:
         model = Feedback
         exclude = ('created_at', )
 
 
-class WantedSeriesForm(BootstrapFormMixin, forms.ModelForm):
+class WantedSeriesForm(forms.ModelForm):
     class Meta:
         model = WantedSeries

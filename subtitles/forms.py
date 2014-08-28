@@ -5,11 +5,10 @@ from django.forms.models import inlineformset_factory
 from auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from series.models import Episode
-from settings.mixins import BootstrapFormMixin
 from subtitles.models import Subtitle
 
 
-class SubtitleForm(BootstrapFormMixin, forms.ModelForm):
+class SubtitleForm(forms.ModelForm):
 
     class Meta:
         model = Subtitle

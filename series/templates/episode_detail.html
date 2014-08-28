@@ -19,7 +19,7 @@
         <div>
             <video id="video_container" width="870" height="490" poster="{{ object.preview.url }}" class="video-js vjs-default-skin vjs-big-play-centered"
                    data-setup='{"example_option":true}' controls preload="auto">
-                <source src="{{ object.source.url }}" type='video/mp4;"'/>
+                <source src="{# {{ object.source.url }} #}http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4;"'/>
                 {% for subtitle in object.subtitles.all() %}
                     <track kind="subtitles" src="{{ subtitle.source.url }}" srclang="{{ subtitle.language }}" label="{{ subtitle.get_language_display() }}">
                 {% endfor %}

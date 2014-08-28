@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'auth',
     'subtitles',
     'coffin',
-    'crispy_forms'
+    'storages'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,15 +115,13 @@ LANGUAGES = (
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/upload/'
 STATIC_ROOT = BASE_DIR + '/static/'
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
-MEDIA_URL = BASE_DIR + '/upload/'
 
 STATICFILES_DIRS = (
     SETTINGS_PATH + '/static/',
 )
-
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 AUTH_USER_MODEL = 'auth.User'
 
@@ -134,3 +132,13 @@ JINJA2_EXTENSIONS = (
 LOGIN_URL = '/login/'
 
 from settings_local import *
+
+
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = 'settings.s3utils.MediaRootS3BotoStorage'
+    STATICFILES_STORAGE = 'settings.s3utils.StaticRootS3BotoStorage'
+    AWS_STORAGE_BUCKET_NAME = 'eiscalle'
+    S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
+    AWS_ACCESS_KEY_ID = 'AKIAIOORR2YSI7ASEK2A'
+    AWS_SECRET_ACCESS_KEY = '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'

@@ -7266,6 +7266,7 @@ vjs.Player.prototype.addTextTracks = function (trackList) {
 
 // Show a text track
 // disableSameKind: disable all other tracks of the same kind. Value should be a track kind (captions, etc.)
+// субтитры
 vjs.Player.prototype.showTextTrack = function (id, disableSameKind) {
     var tracks = this.textTracks_,
         i = 0,
@@ -7286,9 +7287,9 @@ vjs.Player.prototype.showTextTrack = function (id, disableSameKind) {
 
             // Disable tracks of the same kind
         }
-//    else if (disableSameKind && track.kind() == disableSameKind && track.mode() > 0) {
-//      track.disable();
-//    }
+        else if (typeof(id) === 'undefined' && disableSameKind && track.kind() == disableSameKind && track.mode() > 0) {
+          track.disable();
+        }
     }
 
     // Get track kind from shown track or disableSameKind
@@ -7644,7 +7645,7 @@ vjs.TextTrack.prototype.parseCues = function (srcContent) {
         lines = srcContent.split('\n'),
         line = '', id;
 
-    for (var i = 1, j = lines.length; i < j; i++) {
+    for (var i = 0, j = lines.length; i < j; i++) {
         // Line 0 should be 'WEBVTT', so skipping i=0
 
         line = vjs.trim(lines[i]); // Trim whitespace and linebreaks
@@ -7982,7 +7983,7 @@ vjs.OffTextTrackMenuItem = vjs.TextTrackMenuItem.extend({
             },
             player: player,
             label: function () {
-                return options['kind'] + ' off';
+                return options['kind'] + ' offf';
             },
             dflt: function () {
                 return false;
@@ -8397,3 +8398,23 @@ vjs.autoSetupTimeout(1);
 vjs.plugin = function (name, init) {
     vjs.Player.prototype[name] = init;
 };
+
+// keys
+//$(document).keydown(function (e) {
+//    // Shift + q ;37-40 left, up, right, down
+//    if (e.shiftKey && e.which == 81)
+//        alert(1);
+//    // Shift + w
+//    else if (e.shiftKey && e.which == 87)
+//        asert(2);
+//    else if (e.which == 81){
+//
+//    }
+//    else if (e.which == 87) {
+//
+//    }
+//    else if (e.which == 69) {
+//        e.preventDefault(); // prevent the default action (scroll / move caret)
+//        vjs.OffTextTrackMenuItem.prototype.click();
+//    }
+//});

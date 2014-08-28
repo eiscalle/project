@@ -2,13 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-27 13:51+0000\n"
+"POT-Creation-Date: 2014-08-28 09:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +15,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:12
-msgid "Исходный файл"
-msgstr "Source file"
+#: constants.py:6
+msgid "Английский"
+msgstr "English"
 
-#: models.py:13
-msgid "Язык"
-msgstr "Language"
+#: constants.py:7
+msgid "Русский"
+msgstr "Russian"
 
-#: models.py:15
-msgid "Сериал"
-msgstr "Serial"
+#: constants.py:8
+msgid "Китайский"
+msgstr "Chinese"
 
-#: models.py:18
-msgid "Субтитр"
-msgstr "Subtitle"
+#: settings.py:109
+msgid "Russian"
+msgstr "Russian"
 
-#: models.py:19
-msgid "Субтитры"
-msgstr "Subtitles"
+#: settings.py:110
+msgid "English"
+msgstr "English"
+
+#: templates/base.html:34
+msgid "Проект"
+msgstr "Project"
+
+#: templates/base.html:38
+msgid "Заказать сериал"
+msgstr "Order serial"
+
+#: templates/base.html:39
+msgid "Оставить отзыв"
+msgstr "Feedback"
+
+#: templates/base.html:48 templates/base.html.py:50
+msgid "Поиск"
+msgstr "Search"
+
+#: templates/base.html:60
+msgid "Сериалы"
+msgstr "Serials"
+
+#: templates/base.html:72
+msgid "Главная страница"
+msgstr "Main page"
+
+#: templates/macros.html:8
+msgid "Пожалуйста, исправьте ошибки ниже."
+msgstr "Please, correct errors below."
+
+#: templates/macros.html:30
+msgid "Отправить"
+msgstr "Send"
+
+#: templates/macros.html:39
+msgid "Извините, по Вашему запросу ничего не найдено."
+msgstr "Sorry, there is no data for your request."
+
+#~ msgid "Исходный файл"
+#~ msgstr "Source file"
+
+#~ msgid "Язык"
+#~ msgstr "Language"
+
+#~ msgid "Субтитр"
+#~ msgstr "Subtitle"
+
+#~ msgid "Субтитры"
+#~ msgstr "Subtitles"

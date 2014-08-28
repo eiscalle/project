@@ -4,10 +4,9 @@ from __future__ import unicode_literals
 from django import forms
 
 from series.models import Episode
-from settings.mixins import BootstrapFormMixin
 
 
-class EpisodeCreateForm(BootstrapFormMixin, forms.ModelForm):
+class EpisodeCreateForm(forms.ModelForm):
 
     class Meta:
         model = Episode
