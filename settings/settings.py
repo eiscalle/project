@@ -47,7 +47,8 @@ INSTALLED_APPS = (
     'auth',
     'subtitles',
     'coffin',
-    'storages'
+    'storages',
+    'ajaxuploader'
 )
 
 MIDDLEWARE_CLASSES = (
