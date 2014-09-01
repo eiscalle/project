@@ -141,5 +141,3 @@ if not DEBUG:
     AWS_STORAGE_BUCKET_NAME = 'eiscalle'
     S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL
-    AWS_ACCESS_KEY_ID = 'AKIAIOORR2YSI7ASEK2A'
-    AWS_SECRET_ACCESS_KEY = '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'
