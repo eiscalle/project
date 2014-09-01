@@ -57,7 +57,8 @@
                 $('#fine_uploader').fineUploaderS3({
                     request: {
                         endpoint: '{{ AWS_STORAGE_BUCKET_NAME }}.s3.amazonaws.com',
-                        accessKey: '{{ AWS_UPLOAD_CLIENT_KEY }}'
+                        accessKey: '{{ AWS_UPLOAD_CLIENT_KEY }}',
+                        params: {category: "upload"}
                     },
                     signature: {
                         endpoint: '{% url "ajaxuploader:s3_signature" %}'
@@ -80,6 +81,16 @@
                     },
                     resume: {
                         enabled: true
+                    },
+                    objectProperties: {
+                        key: function (fileId) {
+
+                            var filename = $('#fine_uploader').fineUploader('getName', fileId);
+                            var uuid = $('#fine_uploader').fineUploader('getUuid', fileId);
+                            var ext = filename.substr(filename.lastIndexOf('.') + 1);
+
+                            return  'uploads/' + uuid + '.' + ext;
+                        }
                     }
                 });
             });
