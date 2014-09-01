@@ -117,7 +117,7 @@ LANGUAGES = (
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/upload/'
+MEDIA_URL = '/uploads/'
 STATIC_ROOT = BASE_DIR + '/static/'
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
 
@@ -141,3 +141,4 @@ if not False:
     STATICFILES_STORAGE = 'settings.s3utils.StaticRootS3BotoStorage'
     S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL + 'static/'
+    MEDIA_URL = S3_URL + 'uploads/'
