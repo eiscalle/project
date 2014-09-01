@@ -7,6 +7,7 @@ from django.forms.models import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
+import config
 from series.forms import EpisodeCreateForm
 from series.models import Episode, Series
 from subtitles.forms import SubtitleFormset
@@ -63,4 +64,6 @@ class EpisodeCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super(EpisodeCreate, self).get_context_data(**kwargs)
         context['subtitle_formset'] = self.subtitle_formset
+        context['AWS_UPLOAD_CLIENT_KEY'] = config.AWS_UPLOAD_CLIENT_KEY
+        context['AWS_STORAGE_BUCKET_NAME'] = config.AWS_STORAGE_BUCKET_NAME
         return context

@@ -4,34 +4,8 @@
 
 {% block add_to_head %}
 
-    <script src="{{ STATIC_URL }}ajaxuploader/js/fileuploader.js"></script>
-    <link href="{{ STATIC_URL }}ajaxuploader/css/fileuploader.css" media="screen" rel="stylesheet" type="text/css"/>
-    <script>
-        $(function () {
-            var uploader = new qq.FileUploader({
-                action: "{% url 'episode_upload' %}",
-                element: $('#file-uploader')[0],
-                multiple: true,
-                onComplete: function (id, fileName, responseJSON) {
-                    if (responseJSON.success) {
-                        alert("success!");
-                    } else {
-                        alert("upload failed!");
-                    }
-                },
-                onAllComplete: function (uploads) {
-                    // uploads is an array of maps
-                    // the maps look like this: {file: FileObject, response: JSONServerResponse}
-                    alert("All complete!");
-                },
-                params: {
-                    'csrf_token': '{{ csrf_token }}',
-                    'csrf_name': 'csrfmiddlewaretoken',
-                    'csrf_xname': 'X-CSRFToken'
-                }
-            });
-        });
-    </script>
+    <script src="{{ STATIC_URL }}fineuploader/s3.jquery.fineuploader-5.0.4.js"></script>
+    <link href="{{ STATIC_URL }}fineuploader/fineuploader-5.0.4.min.css" media="screen" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block main_panel_name %}
@@ -40,11 +14,77 @@
 
 {% block content %}
     <form action="" method="post" enctype="multipart/form-data">
-        <div id="file-uploader">
+        <script type="text/template" id="qq-template">
+            <div class="qq-uploader-selector qq-uploader">
+                <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+                    <div class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+                </div>
+                <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+                    <span>Drop files here to upload</span>
+                </div>
+                <div class="qq-upload-button-selector qq-upload-button">
+                    <div>Upload a file</div>
+                </div>
+            <span class="qq-drop-processing-selector qq-drop-processing">
+                <span>Processing dropped files...</span>
+                <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+            </span>
+                <ul class="qq-upload-list-selector qq-upload-list">
+                    <li>
+                        <div class="qq-progress-bar-container-selector">
+                            <div class="qq-progress-bar-selector qq-progress-bar"></div>
+                        </div>
+                        <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                        <span class="qq-edit-filename-icon-selector qq-edit-filename-icon"></span>
+                        <span class="qq-upload-file-selector qq-upload-file"></span>
+                        <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+                        <span class="qq-upload-size-selector qq-upload-size"></span>
+                        <a class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</a>
+                        <a class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</a>
+                        <a class="qq-upload-delete-selector qq-upload-delete" href="#">Delete</a>
+                        <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                    </li>
+                </ul>
+            </div>
+        </script>
+        <div id="fine_uploader">
             <noscript>
                 <p>Please enable JavaScript to use file uploader.</p>
             </noscript>
         </div>
+        <script>
+            $(document).ready(function(){
+                $('#fine_uploader').fineUploaderS3({
+                    request: {
+                        endpoint: '{{ AWS_STORAGE_BUCKET_NAME }}.s3.amazonaws.com',
+                        accessKey: '{{ AWS_UPLOAD_CLIENT_KEY }}'
+                    },
+                    signature: {
+                        endpoint: '{% url "ajaxuploader:s3_signature" %}'
+                    },
+                    uploadSuccess: {
+                        endpoint: '{% url "ajaxuploader:s3_success" %}'
+                    },
+                    iframeSupport: {
+                        localBlankPagePath: '/success.html'
+                    },
+                    deleteFile: {
+                        enabled: true,
+                        endpoint: '{% url "ajaxuploader:s3_delete" %}'
+                    },
+                    retry: {
+                        enableAuto: true
+                    },
+                    chunking: {
+                        enabled: true
+                    },
+                    resume: {
+                        enabled: true
+                    }
+                });
+            });
+
+        </script>
         {{ subtitle_formset.management_form|safe }}
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         {% if form.errors or subtitle_formset.errors %}

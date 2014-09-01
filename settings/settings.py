@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from config import *
+
 SETTINGS_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -135,9 +136,8 @@ LOGIN_URL = '/login/'
 from settings_local import *
 
 
-if not DEBUG:
+if not False:
     DEFAULT_FILE_STORAGE = 'settings.s3utils.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'settings.s3utils.StaticRootS3BotoStorage'
-    AWS_STORAGE_BUCKET_NAME = 'eiscalle'
     S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = S3_URL
+    STATIC_URL = S3_URL + 'static/'
