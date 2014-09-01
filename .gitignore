@@ -54,5 +54,5 @@ docs/_build/
 
 .idea/
 
-
 *settings_local.py
+config.py
