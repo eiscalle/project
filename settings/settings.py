@@ -49,7 +49,8 @@ INSTALLED_APPS = (
     'subtitles',
     'coffin',
     'storages',
-    'ajaxuploader'
+    'ajaxuploader',
+    's3utils'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,8 +138,8 @@ from settings_local import *
 
 
 if not False:
-    DEFAULT_FILE_STORAGE = 'settings.s3utils.MediaRootS3BotoStorage'
-    STATICFILES_STORAGE = 'settings.s3utils.StaticRootS3BotoStorage'
+    DEFAULT_FILE_STORAGE = 's3utils.settings.MediaRootS3BotoStorage'
+    STATICFILES_STORAGE = 's3utils.settings.StaticRootS3BotoStorage'
     S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL + 'static/'
-    MEDIA_URL = S3_URL + 'uploads/'
+    MEDIA_URL = S3_URL
