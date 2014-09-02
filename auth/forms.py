@@ -3,20 +3,16 @@ from __future__ import unicode_literals
 from django import forms
 from auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from settings.mixins import BootstrapFormMixin
 
 
-class RegistrationForm(forms.Form):
+class RegistrationForm(BootstrapFormMixin, forms.Form):
     username = forms.CharField(label=_('Имя пользователя'), max_length=64)
     email = forms.EmailField(label=_('E-mail адрес'), max_length=64, required=True)
 
     password = forms.CharField(label=_('Пароль'), max_length=64, required=True, widget=forms.PasswordInput, min_length=5)
     confirm_password = forms.CharField(label=_('Подтверждение пароля'), max_length=64, required=True,
                                        widget=forms.PasswordInput, min_length=5)
-
-    def __init__(self, *args, **kwargs):
-        super(RegistrationForm, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control'})
 
     def clean_email(self):
         email = self.cleaned_data.get('email', '')
@@ -53,7 +49,7 @@ class RegistrationForm(forms.Form):
         return confirm_password
 
 
-class LoginForm(forms.ModelForm):
+class LoginForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = User
