@@ -11,7 +11,7 @@ class Feedback(models.Model):
     subject = models.CharField(_('Заголовок'), default='', max_length=255)
     message = models.TextField(_('Сообщение'), default='', max_length=2000)
     email = models.EmailField(_('E-mail'), default='', max_length=255)
-    created_at = models.DateTimeField(_('Дата создания'), default=datetime.datetime.now(), auto_now_add=True)
+    created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
 
     class Meta:
         verbose_name = _('Отзыв')

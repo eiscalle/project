@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^', include('auth.urls')),
+    url(r'^', include('authentication.urls')),
     url(r'^ajax-uploader/', include('ajaxuploader.urls', namespace='ajaxuploader', app_name='ajaxuploader')),
     url(r'^s3utils/', include('s3utils.urls', namespace='s3utils', app_name='s3utils')),
     url(r'^change_lang/(?P<lang_code>(en|ru))/$', 'home.views.change_language', name='change_language'),

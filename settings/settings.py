@@ -22,11 +22,6 @@ SECRET_KEY = '6q6t77q!s@ens6c&3wbpr$895csf)i$bvnx&f8-a(n@@u!b**&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = (
-    SETTINGS_PATH + '/templates/'
-)
-
 ALLOWED_HOSTS = []
 
 
@@ -41,13 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'jinja2',
-    'south',
     'series',
     'home',
-    'auth',
+    'authentication',
     'subtitles',
-    'coffin',
     'storages',
     'ajaxuploader',
     's3utils'
@@ -61,19 +53,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-    'django.core.context_processors.csrf',
-    'settings.context_processors.series_list',
 )
 
 ROOT_URLCONF = 'settings.urls'
@@ -94,6 +73,37 @@ DATABASES = {
         'PORT': '5432'
     }
 }
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [SETTINGS_PATH + '/templates/'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        }
+    },
+    # {
+    #     'BACKEND': 'django.template.backends.jinja2.Jinja2',
+    #     'DIRS': [SETTINGS_PATH + '/templates/'],
+    #     'APP_DIRS': True,
+    #     'OPTIONS': {
+    #         'extensions': [
+    #             'jinja2.ext.i18n',
+    #             # 'jdj_tags.extensions.DjangoCompat',
+    #         ]
+    #     }
+    #
+    # },
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -126,7 +136,7 @@ STATICFILES_DIRS = (
     SETTINGS_PATH + '/static/',
 )
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 JINJA2_EXTENSIONS = (
     'jinja2.ext.i18n',
@@ -137,9 +147,9 @@ LOGIN_URL = '/login/'
 from settings_local import *
 
 
-if not False:
-    DEFAULT_FILE_STORAGE = 's3utils.settings.MediaRootS3BotoStorage'
-    STATICFILES_STORAGE = 's3utils.settings.StaticRootS3BotoStorage'
-    S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = S3_URL + 'static/'
-    MEDIA_URL = S3_URL
+# if not True:
+#     DEFAULT_FILE_STORAGE = 's3utils.settings.MediaRootS3BotoStorage'
+#     STATICFILES_STORAGE = 's3utils.settings.StaticRootS3BotoStorage'
+#     S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+#     STATIC_URL = S3_URL + 'static/'
+#     MEDIA_URL = S3_URL

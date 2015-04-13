@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from coffin.views.generic import TemplateView, CreateView, ListView
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.utils import translation
 from django.utils.http import is_safe_url
 from django.utils.translation import ugettext_lazy as _, check_for_language
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView, CreateView, ListView
 from home.forms import FeedbackForm, WantedSeriesForm
 from home.models import Feedback, WantedSeries
 from series.models import Series

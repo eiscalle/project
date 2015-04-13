@@ -1,0 +1,15 @@
+{% load i18n %}
+<div class="panel-heading">
+    {% trans 'Личный кабинет' %}
+</div>
+<div class="panel-body">
+    {% if user.is_authenticated %}
+        <div>{{ user.username }}</div>
+        <div><a href="{% url 'episode_create' %}">{% trans 'Загрузить' %}</a></div>
+        <div><a href="{% url 'logout' %}">{% trans 'Выход' %}</a></div>
+    {% else %}
+        <div><a href="{% url 'registration' %}">{% trans 'Зарегистрироваться' %}</a></div>
+        <div><a href="{% url 'login' %}">{% trans 'Войти' %}</a></div>
+    {% endif %}
+
+</div>

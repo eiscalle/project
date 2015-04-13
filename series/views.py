@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from coffin.views.generic import ListView, CreateView, DetailView
-import datetime
-from django.core.urlresolvers import reverse_lazy
-from django.forms.models import inlineformset_factory
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.utils.translation import ugettext_lazy as _
+from django.views.generic import ListView, DetailView, CreateView
+
 import config
 from series.forms import EpisodeCreateForm
 from series.models import Episode, Series
 from subtitles.forms import SubtitleFormset
-from subtitles.models import Subtitle
 
 
 class SeriesMixin(object):

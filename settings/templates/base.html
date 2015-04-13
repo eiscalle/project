@@ -31,12 +31,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'home' %}">{% trans %}Проект{% endtrans %}</a>
+            <a class="navbar-brand" href="{% url 'home' %}">{% trans 'Проект' %}</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'wanted_series' %}">{% trans %}Заказать сериал{% endtrans %}</a></li>
-                <li><a href="{% url 'feedback' %}">{% trans %}Оставить отзыв{% endtrans %}</a></li>
+                <li><a href="{% url 'wanted_series' %}">{% trans 'Заказать сериал' %}</a></li>
+                <li><a href="{% url 'feedback' %}">{% trans 'Оставить отзыв' %}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             {% for lang_code, lang_name in LANGUAGES %}
@@ -45,9 +45,9 @@
             </ul>
             <form class="navbar-form navbar-right" action="{% url 'search' %}" role="search">
                 <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="{% trans %}Поиск{% endtrans %}"/>
+                    <input type="text" name="search" class="form-control" placeholder="{% trans 'Поиск' %}"/>
                 </div>
-                <button type="submit" class="btn btn-default">{% trans %}Поиск{% endtrans %}</button>
+                <button type="submit" class="btn btn-default">{% trans 'Поиск' %}</button>
             </form>
 
         </div>
@@ -57,11 +57,11 @@
 
 <div class="panel panel-default left-content">
     <div class="panel-heading">
-        {% trans %}Сериалы{% endtrans %}
+        {% trans 'Сериалы' %}
     </div>
     <div class="panel-body">
         {% for series in series_list %}
-            <a href="{{ series.get_absolute_url() }}">{{ series.name }}</a>
+            <a href="{{ series.get_absolute_url }}">{{ series.name }}</a>
         {% endfor %}
 
     </div>
@@ -69,7 +69,7 @@
 
 <div class="panel panel-default main-content">
     <div class="panel-heading"><h4>
-        {% block main_panel_name %}{% trans %}Главная страница{% endtrans %}{% endblock %}</h4></div>
+        {% block main_panel_name %}{% trans 'Главная страница' %}{% endblock %}</h4></div>
     <div class="panel-body">
         {% block content %}
             Main Content

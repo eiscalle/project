@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from auth.models import User
+from authentication.models import User
 from settings.constants import LANGUAGES
 
 
@@ -26,7 +26,7 @@ class Series(models.Model):
     description = models.TextField(_('Описание'), default='', max_length=3000)
     original_language = models.CharField(_('Язык сериала'), max_length=24, choices=LANGUAGES,
                                          default=LANGUAGES[0][0])
-    tags = models.ManyToManyField(Tag, verbose_name=_('Теги'), related_name='series', null=True, default=None,
+    tags = models.ManyToManyField(Tag, verbose_name=_('Теги'), related_name='series', default=None,
                                   blank=True)
 
     def get_absolute_url(self):
@@ -46,12 +46,12 @@ class Episode(models.Model):
     number = models.PositiveSmallIntegerField(_('Номер серии'), default=1)
     source = models.CharField(_('Видеофайл'), max_length=255, default='')
     preview = models.CharField(_('Превью'), max_length=255, default='')
-    created_at = models.DateTimeField(_('Дата создания'), default=datetime.datetime.now(), auto_now_add=True)
+    created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
     is_published = models.BooleanField(_('Опубликовано'), default=False)
 
     series = models.ForeignKey(Series, verbose_name=_('Сериал'), related_name='episodes')
     created_by = models.ForeignKey(User, verbose_name=_('Пользователь'), related_name='episodes')
-    tags = models.ManyToManyField(Tag, verbose_name=_('Теги'), related_name='episodes', null=True, default=None,
+    tags = models.ManyToManyField(Tag, verbose_name=_('Теги'), related_name='episodes', default=None,
                                   blank=True)
 
     class Meta:
