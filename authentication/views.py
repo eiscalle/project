@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import FormView, TemplateView
 
-from authentication.forms import RegistrationForm
+from authentication.forms import RegistrationForm, LoginForm
 from authentication.models import User
 from django.utils.translation import ugettext_lazy as _
 
@@ -29,8 +29,9 @@ class RegistrationView(FormView):
         return HttpResponseRedirect(reverse('home'))
 
 
-class LoginView(TemplateView):
+class LoginView(FormView):
     template_name = 'login.html'
+    form_class = LoginForm
     http_method_names = ['get', 'post']
     error = None
 
@@ -59,7 +60,6 @@ class LoginView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(LoginView, self).get_context_data(**kwargs)
-        context['error'] = self.error
         return context
 
 

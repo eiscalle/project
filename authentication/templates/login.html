@@ -1,50 +1,10 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n crispy_forms_tags %}
 
 {% block main_panel_name %}
     {% trans 'Вход на сайт' %}
 {% endblock %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {% if error %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endif %}
-        <table class="table_for_form">
-            <tbody>
-            <tr>
-                <td>
-                    <label for="username">{% trans 'Имя пользователя' %}: </label>
-                </td>
-                <td>
-                    <input type="text" class="form-control" id="username" placeholder="{% trans 'Имя пользователя' %}"
-                           name="username">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="password">{% trans 'Пароль' %}: </label>
-                </td>
-                <td>
-                    <input type="password" class="form-control" id="password" name="password">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="remember_me">{% trans 'Запомнить меня' %}: </label>
-                </td>
-                <td>
-                    <input type="checkbox" class="form-control" id="remember_me" name="remember_me" value="1" checked>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="{% trans 'Войти' %}" class="btn btn-default">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
-
+    {% crispy form %}
 {% endblock %}

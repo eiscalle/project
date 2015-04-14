@@ -12,4 +12,7 @@ class CrispyFormMixin(object):
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
         self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-4'
+        self.helper.f = 'col-lg-4'
+        self.helper.add_input(Submit('submit', _('Submit')))

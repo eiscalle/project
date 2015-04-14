@@ -56,6 +56,10 @@ class RegistrationForm(CrispyFormMixin, forms.Form):
 
 class LoginForm(CrispyFormMixin, forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.helper.form_action = 'login'
+
     class Meta:
         model = User
         fields = ('username', 'password')
