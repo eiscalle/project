@@ -5,10 +5,10 @@ from django import forms
 from django.forms import HiddenInput
 
 from series.models import Episode
-from settings.mixins import BootstrapFormMixin
+from settings.mixins import CrispyFormMixin
 
 
-class EpisodeCreateForm(BootstrapFormMixin, forms.ModelForm):
+class EpisodeCreateForm(CrispyFormMixin, forms.ModelForm):
 
     class Meta:
         model = Episode

@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% from 'macros.html' import render_form %}
 
 {% block main_panel_name %}
     {% trans 'Заказать сериал' %}
 {% endblock %}
 
 {% block content %}
-    {{ render_form(form, 'feedback'|url, csrf_token=csrf_token) }}
+{#    {{ render_form(form, 'feedback'|url, csrf_token=csrf_token) }}#}
 {% endblock %}

@@ -7,3 +7,6 @@ LANGUAGES = (
     ('ru', _('Русский')),
     ('ch', _('Китайский')),
 )
+
+LANGUAGE_CODES = [x[0] for x in LANGUAGES]
+LANGUAGE_PATHS = ['/%s/' % x for x in LANGUAGE_CODES]

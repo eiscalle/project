@@ -36,13 +36,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+
+    'crispy_forms',
+    'storages',
+    'ajaxuploader',
+
     'series',
     'home',
     'authentication',
     'subtitles',
-    'storages',
-    'ajaxuploader',
-    's3utils'
+    's3utils',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,21 +91,10 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'settings.context_processors.series_list',
             ],
         }
     },
-    # {
-    #     'BACKEND': 'django.template.backends.jinja2.Jinja2',
-    #     'DIRS': [SETTINGS_PATH + '/templates/'],
-    #     'APP_DIRS': True,
-    #     'OPTIONS': {
-    #         'extensions': [
-    #             'jinja2.ext.i18n',
-    #             # 'jdj_tags.extensions.DjangoCompat',
-    #         ]
-    #     }
-    #
-    # },
 ]
 
 # Internationalization
@@ -123,6 +115,7 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -137,10 +130,6 @@ STATICFILES_DIRS = (
 )
 
 AUTH_USER_MODEL = 'authentication.User'
-
-JINJA2_EXTENSIONS = (
-    'jinja2.ext.i18n',
-)
 
 LOGIN_URL = '/login/'
 

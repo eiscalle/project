@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% from 'macros.html' import no_results %}
 
 {% block main_panel_name %}
     {% trans 'Результаты поиска' %}
@@ -14,7 +13,7 @@
         {% endfor %}
 
     {% else %}
-        {{ no_results() }}
+{#        {{ no_results() }}#}
     {% endif %}
     </div>
 {% endblock %}

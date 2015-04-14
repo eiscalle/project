@@ -6,11 +6,11 @@ from django.forms.widgets import HiddenInput
 from authentication.models import User
 from django.utils.translation import ugettext_lazy as _
 from series.models import Episode
-from settings.mixins import BootstrapFormMixin
+from settings.mixins import CrispyFormMixin
 from subtitles.models import Subtitle
 
 
-class SubtitleForm(BootstrapFormMixin, forms.ModelForm):
+class SubtitleForm(CrispyFormMixin, forms.ModelForm):
 
     class Meta:
         model = Subtitle
