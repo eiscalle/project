@@ -5,7 +5,7 @@
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         {% endif %}
         {% if form.errors %}
-            <div class="alert alert-danger">{% trans %}Пожалуйста, исправьте ошибки ниже.{% endtrans %}</div>
+            <div class="alert alert-danger">{% trans 'Пожалуйста, исправьте ошибки ниже.' %}</div>
         {% endif %}
         <table class="table_for_form">
             <tbody>
@@ -27,7 +27,7 @@
 
             <tr>
                 <td>
-                    <input type="submit" value="{% trans %}Отправить{% endtrans %}" class="btn btn-default">
+                    <input type="submit" value="{% trans 'Отправить' %}" class="btn btn-default">
                 </td>
             </tr>
             </tbody>
@@ -36,5 +36,5 @@
 {% endmacro %}
 
 {% macro no_results() %}
-    <div class="alert alert-info text-center">{% trans %}Извините, по Вашему запросу ничего не найдено.{% endtrans %}</div>
+    <div class="alert alert-info text-center">{% trans 'Извините, по Вашему запросу ничего не найдено.' %}</div>
 {% endmacro %}

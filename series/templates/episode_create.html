@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main_panel_name %}
-    {% trans %}Загрузка сериала{% endtrans %}
+    {% trans 'Загрузка сериала' %}
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
         {{ subtitle_formset.management_form|safe }}
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         {% if form.errors or subtitle_formset.errors %}
-            <div class="alert alert-danger">{% trans %}Пожалуйста, исправьте ошибки ниже.{% endtrans %}</div>
+            <div class="alert alert-danger">{% trans 'Пожалуйста, исправьте ошибки ниже.' %}</div>
         {% endif %}
         <table class="table_for_form">
             <tbody>
@@ -87,7 +87,7 @@
 
             <tr>
                 <td>
-                    <input type="submit" value="{% trans %}Отправить{% endtrans %}" class="btn btn-default">
+                    <input type="submit" value="{% trans 'Отправить' %}" class="btn btn-default">
                 </td>
             </tr>
             </tbody>

@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block main_panel_name %}
-    {% trans %}Вход на сайт{% endtrans %}
+    {% trans 'Вход на сайт' %}
 {% endblock %}
 
 {% block content %}
@@ -15,16 +15,16 @@
             <tbody>
             <tr>
                 <td>
-                    <label for="username">{% trans %}Имя пользователя{% endtrans %}: </label>
+                    <label for="username">{% trans 'Имя пользователя' %}: </label>
                 </td>
                 <td>
-                    <input type="text" class="form-control" id="username" placeholder="{% trans %}Имя пользователя{% endtrans %}"
+                    <input type="text" class="form-control" id="username" placeholder="{% trans 'Имя пользователя' %}"
                            name="username">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="password">{% trans %}Пароль{% endtrans %}: </label>
+                    <label for="password">{% trans 'Пароль' %}: </label>
                 </td>
                 <td>
                     <input type="password" class="form-control" id="password" name="password">
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td>
-                    <label for="remember_me">{% trans %}Запомнить меня{% endtrans %}: </label>
+                    <label for="remember_me">{% trans 'Запомнить меня' %}: </label>
                 </td>
                 <td>
                     <input type="checkbox" class="form-control" id="remember_me" name="remember_me" value="1" checked>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="{% trans %}Войти{% endtrans %}" class="btn btn-default">
+                    <input type="submit" value="{% trans 'Войти' %}" class="btn btn-default">
                 </td>
             </tr>
             </tbody>
