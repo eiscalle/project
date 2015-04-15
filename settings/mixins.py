@@ -6,6 +6,8 @@ from crispy_forms.helper import FormHelper
 
 
 class CrispyFormMixin(object):
+    submit_name = _('Отправить')
+    form_action = 'home'
 
     def __init__(self, *args, **kwargs):
         super(CrispyFormMixin, self).__init__(*args, **kwargs)
@@ -15,4 +17,5 @@ class CrispyFormMixin(object):
         self.helper.label_class = 'col-lg-4'
         self.helper.field_class = 'col-lg-4'
         self.helper.f = 'col-lg-4'
-        self.helper.add_input(Submit('submit', _('Submit')))
+        self.helper.form_action = self.form_action
+        self.helper.add_input(Submit('submit', self.submit_name))
