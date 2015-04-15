@@ -35,32 +35,16 @@ class LoginView(FormView):
     http_method_names = ['get', 'post']
     error = None
 
-    def post(self, request, *args, **kwargs):
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        remember_me = request.POST.get('remember_me', None)
+    def form_valid(self, form):
+        login(self.request, form.auth_user)
+        if not form.cleaned_data.get('remember_me', True):
+            self.request.session.set_expiry(0)
 
-        auth_user = authenticate(username=username, password=password)
-        if auth_user:
-            login(request, auth_user)
-
-            if not remember_me:
-                request.session.set_expiry(0)
+        if self.request.GET.get('next', ''):
+            redirect_to = self.request.GET.get('next', '')
         else:
-            self.error = _('Имя пользователя или пароль введены неверно.')
-            return self.get(request, *args, **kwargs)
-
-        if request.GET.get('next', ''):
-            redirect_to = request.GET.get('next', '')
-        else:
-            redirect_to = '/'
-
-        redirect_to = redirect_to if redirect_to else '/'
+            redirect_to = reverse('home')
         return HttpResponseRedirect(redirect_to)
-
-    def get_context_data(self, **kwargs):
-        context = super(LoginView, self).get_context_data(**kwargs)
-        return context
 
 
 def logout_user(request):

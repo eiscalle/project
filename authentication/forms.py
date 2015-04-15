@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django import forms
+from django.contrib.auth import authenticate, login
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from authentication.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -54,12 +56,19 @@ class RegistrationForm(CrispyFormMixin, forms.Form):
         return confirm_password
 
 
-class LoginForm(CrispyFormMixin, forms.ModelForm):
+class LoginForm(CrispyFormMixin, forms.Form):
+    username = forms.CharField(label=_('Имя пользователя'), max_length=30)
+    password = forms.CharField(label=_('Пароль'), max_length=128, widget=forms.PasswordInput())
+    remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput(), label=_('Запомнить'), initial=True)
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.helper.form_action = 'login'
 
-    class Meta:
-        model = User
-        fields = ('username', 'password')
+    def clean(self):
+        cleaned_data = super(LoginForm, self).clean()
+
+        auth_user = authenticate(username=cleaned_data.get('username'), password=cleaned_data.get('password'))
+        if not auth_user:
+            raise ValidationError(_('Имя пользователя и/или пароль введены неверно.'), code='invalid')
+        self.auth_user = auth_user
