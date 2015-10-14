@@ -15,6 +15,9 @@ from series.models import Series
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        return super(HomePageView, self).get_context_data(**kwargs)
+
 
 class FeedbackView(CreateView):
     model = Feedback

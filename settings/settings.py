@@ -22,8 +22,6 @@ SECRET_KEY = '6q6t77q!s@ens6c&3wbpr$895csf)i$bvnx&f8-a(n@@u!b**&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -36,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'authentication',
 
     'crispy_forms',
     'storages',
@@ -43,7 +42,6 @@ INSTALLED_APPS = (
 
     'series',
     'home',
-    'authentication',
     'subtitles',
     's3utils',
 )
@@ -122,11 +120,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/uploads/'
-STATIC_ROOT = BASE_DIR + '/static/'
-MEDIA_ROOT = BASE_DIR + '/static/upload/'
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static', 'upload')
 
 STATICFILES_DIRS = (
-    SETTINGS_PATH + '/static/',
+    os.path.join(SETTINGS_PATH, 'static'),
 )
 
 AUTH_USER_MODEL = 'authentication.User'
@@ -142,3 +141,7 @@ from settings_local import *
 #     S3_URL = 'http://%s.s3-website-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 #     STATIC_URL = S3_URL + 'static/'
 #     MEDIA_URL = S3_URL
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',  # Allow domain and subdomains
+]
