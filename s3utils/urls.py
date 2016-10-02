@@ -1,11 +1,7 @@
-from ajaxuploader.views import AjaxFileUploader
-from django.conf.urls import patterns, url
-from django.contrib.auth.decorators import login_required
+from django.conf.urls import url
 
-from series.views import EpisodeList, EpisodeCreate, EpisodeDetail
+from s3utils.views import upload_success
 
-
-urlpatterns = patterns(
-    's3utils.views',
-    url(r'^success/$', 'upload_success', name='upload_success'),
-)
+urlpatterns = [
+    url(r'^success/$', upload_success, name='upload_success'),
+]
